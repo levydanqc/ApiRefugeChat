@@ -5,7 +5,8 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
 const chatonRoutes = require("./routes/chaton");
-const familleTempsRoutes = require("./routes/familleTemps");
+const familleTempRoutes = require("./routes/familleTemps");
+const adoptantRoutes = require("./routes/adoptant");
 const app = express();
 
 app.use(bodyParser.json()); // application/json
@@ -31,7 +32,8 @@ app.use((req, res, next) => {
 });
 
 app.use(chatonRoutes);
-app.use(familleTempsRoutes)
+app.use(familleTempRoutes);
+app.use(adoptantRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);
