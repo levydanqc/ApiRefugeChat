@@ -61,3 +61,24 @@ exports.getChaton = (req, res, next) => {
       next(err);
     });
 };
+
+exports.updateChaton = (req, res, next) => {
+  const chatonId = req.params.chatonId;
+  const updateChaton = {};
+  for (const [attr, value] of Object.entries(req.body)) {
+    updateChaton[attr] = value;
+  }
+  Chaton.findByIdAndUpdate({ _id: chatonId }, { $set: updateChaton })
+    .then((result) => {
+      res.status(200).json({
+        message: "Chaton mis à jour avec succès.",
+        chaton: result,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
