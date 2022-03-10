@@ -64,10 +64,13 @@ exports.getChaton = (req, res, next) => {
 
 exports.updateChaton = (req, res, next) => {
   const chatonId = req.params.chatonId;
-  const updateChaton = {};
-  for (const [attr, value] of Object.entries(req.body)) {
-    updateChaton[attr] = value;
-  }
+
+  const updateChaton = new Chaton({
+    _id: chatonId,
+    nom: req.body.nom,
+    sexe: req.body.sexe,
+    dateNaissance: req.body.dateNaissance,
+  });
   Chaton.findByIdAndUpdate(
     { _id: chatonId },
     { $set: updateChaton },
