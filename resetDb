@@ -1,6 +1,9 @@
 #!/usr/bin/env zsh
 
-mongoimport --db refuge --collection adoptants --file ./BD/Data/adoptants.json --jsonArray
-mongoimport --db refuge --collection chatons --file ./BD/Data/chatons.json --jsonArray
-mongoimport --db refuge --collection familletemps --file ./BD/Data/familletemps.json --jsonArray
+DIR=${0:a:h}
+cd $DIR
+
+mongoimport --db refuge --collection adoptants --drop --file ./BD/Data/adoptants.json --jsonArray
+mongoimport --db refuge --collection chatons --drop --file ./BD/Data/chatons.json --jsonArray
+mongoimport --db refuge --collection familletemps --drop --file ./BD/Data/familletemps.json --jsonArray
  

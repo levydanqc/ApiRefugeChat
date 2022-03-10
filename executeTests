@@ -1,4 +1,7 @@
 #!/usr/bin/env zsh
 
+DIR=${0:a:h}
+cd $DIR
+
 ./resetDb
 newman run ./Tests/TP2H2022.postman_collection.json -e ./Tests/TP2H2022.postman_environment.json
