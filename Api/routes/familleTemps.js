@@ -10,4 +10,6 @@ router.post("/familleTemp", familleTempController.createFamilleTemp);
 
 router.get("/famillesTemp/:id", familleTempController.getFamilleTempById);
 
+router.put("/famillesTemp/:id", familleTempController.updateFamilleTemp);
+
 module.exports = router;

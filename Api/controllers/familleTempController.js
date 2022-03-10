@@ -67,3 +67,30 @@ exports.getFamilleTempById = (req, res, next) => {
       next(err);
     });
 };
+
+exports.updateFamilleTemp = (req, res, next) => {
+  const familleTempId = req.params.id;
+
+  const updateFamilleTemp = new FamilleTemp({
+    _id: familleTempId,
+    adresse: req.body.adresse,
+    chatons: req.body.chatons,
+  });
+  FamilleTemp.findByIdAndUpdate(
+    { _id: familleTempId },
+    { $set: updateFamilleTemp },
+    { new: true }
+  )
+    .then((result) => {
+      res.status(200).json({
+        message: "Famille temporaire modifiée avec succès!",
+        familleTemp: result,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
