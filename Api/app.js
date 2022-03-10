@@ -1,22 +1,32 @@
 "use strict";
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
-const chatonRoutes = require('./routes/chaton');
+const chatonRoutes = require("./routes/chaton");
 
 const app = express();
 
 app.use(bodyParser.json()); // application/json
 
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
-    'Access-Control-Allow-Methods',
-    'OPTIONS, GET, POST, PUT, PATCH, DELETE'
+    "Access-Control-Allow-Methods",
+    "OPTIONS, GET, POST, PUT, PATCH, DELETE"
   );
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  // TODO: Vérifier si fonctionne et utile
+  if (req.method === "PUT" || req.method === "POST") {
+    res.setHeader("Content-Type", "application/json");
+  }
+
+  if (res.method != "GET") {
+    res.setHeader("Content-Type", "application/json");
+  }
+
   next();
 });
 
@@ -31,8 +41,8 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect('mongodb://127.0.0.1:27017/tp2')
-  .then(result => {
+  .connect("mongodb://127.0.0.1:27017/refuge")
+  .then((result) => {
     app.listen(3000);
   })
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
