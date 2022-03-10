@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+./resetDb
+newman run ./Tests/TP2H2022.postman_collection.json -e ./Tests/TP2H2022.postman_environment.json

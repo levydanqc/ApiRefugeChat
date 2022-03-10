@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+mongoimport --db refuge --collection adoptants --file ./BD/Data/adoptants.json --jsonArray
+mongoimport --db refuge --collection chatons --file ./BD/Data/chatons.json --jsonArray
+mongoimport --db refuge --collection familletemps --file ./BD/Data/familletemps.json --jsonArray
+ 
