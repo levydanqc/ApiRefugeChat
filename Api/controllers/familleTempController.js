@@ -94,3 +94,17 @@ exports.updateFamilleTemp = (req, res, next) => {
       next(err);
     });
 };
+
+exports.deleteFamilleTemp = (req, res, next) => {
+  const familleTempId = req.params.id;
+  FamilleTemp.findByIdAndDelete(familleTempId)
+    .then((result) => {
+      res.status(204).send();
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
