@@ -3,7 +3,7 @@
 const Chaton = require("../models/chaton");
 
 exports.getChatons = (req, res, next) => {
-  Chaton.find()
+  Chaton.find(req.query.sexe ? { sexe: req.query.sexe } : {})
     .sort({ _id: 1 })
     .then((chatons) => {
       res.status(200).json({
