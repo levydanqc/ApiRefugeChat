@@ -8,5 +8,6 @@ router.get("/famillesTemp", familleTempController.getFamilleTemp);
 
 router.post("/familleTemp", familleTempController.createFamilleTemp);
 
+router.get("/famillesTemp/:id", familleTempController.getFamilleTempById);
 
 module.exports = router;
