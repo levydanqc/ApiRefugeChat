@@ -1,0 +1,96 @@
+[{
+  "_id": {
+    "$oid": "615bb6205286b81fe6387d32"
+  },
+  "email": "Murl41@hotmail.com",
+  "nom": "Boris",
+  "telephone": 4815554454,
+  "historiqueAdoption": [
+    {
+      "chatonId": "615bb5225286b81fe6387ce4",
+      "dateAdoption": "2021-10-05T02:15:03.447Z"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb6205286b81fe6387d34"
+  },
+  "email": "Alisa_Romaguera57@hotmail.com",
+  "nom": "Shaina",
+  "telephone": 4815556666,
+  "historiqueAdoption": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb6205286b81fe6387d36"
+  },
+  "email": "Rosalind_Sanford70@gmail.com",
+  "nom": "Lilian",
+  "telephone": 4815556354,
+  "historiqueAdoption": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb6205286b81fe6387d38"
+  },
+  "email": "Matilde_Rutherford9@gmail.com",
+  "nom": "Rosamond",
+  "telephone": 4815552435,
+  "historiqueAdoption": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb6205286b81fe6387d3a"
+  },
+  "email": "Wellington_Gibson22@hotmail.com",
+  "nom": "Alessandro",
+  "telephone": 4815559989,
+  "historiqueAdoption": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb6205286b81fe6387d3c"
+  },
+  "email": "Christine_Rolfson50@hotmail.com",
+  "nom": "Autumn",
+  "telephone": 4815557725,
+  "historiqueAdoption": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb6205286b81fe6387d3e"
+  },
+  "email": "Justus_Zulauf92@hotmail.com",
+  "nom": "Barry",
+  "telephone": 4815556435,
+  "historiqueAdoption": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb6215286b81fe6387d40"
+  },
+  "email": "Jodie.Hand@hotmail.com",
+  "nom": "Cary",
+  "telephone": 4815556566,
+  "historiqueAdoption": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb6215286b81fe6387d42"
+  },
+  "email": "Rachael_Quigley@gmail.com",
+  "nom": "Cleo",
+  "telephone": 4815554456,
+  "historiqueAdoption": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb6215286b81fe6387d44"
+  },
+  "email": "Sheridan_Parisian@hotmail.com",
+  "nom": "Alejandra",
+  "telephone": 4815554655,
+  "historiqueAdoption": [],
+  "__v": 0
+}]

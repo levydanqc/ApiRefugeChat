@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "621fc1990dd87cc71827f0c0"
+  },
+  "adresse": "1234 rue de nule part",
+  "chatons": [
+    {
+      "chatonId": "615bb5205286b81fe6387ce2"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621fc2c7a94bd310746362a2"
+  },
+  "adresse": "547 rue moisan",
+  "chatons": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621fc2d6a94bd310746362a4"
+  },
+  "adresse": "999 avenue royale",
+  "chatons": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621fc2e6a94bd310746362a6"
+  },
+  "adresse": "568 chemin hamilton",
+  "chatons": [],
+  "__v": 0
+}]

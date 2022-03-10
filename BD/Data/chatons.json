@@ -1,0 +1,101 @@
+[{
+  "_id": {
+    "$oid": "615bb5205286b81fe6387ce2"
+  },
+  "nom": "Amina",
+  "sexe": "F",
+  "dateNaissance": {
+    "$date": "2021-10-05T02:14:56.553Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb5225286b81fe6387ce4"
+  },
+  "nom": "Dandre",
+  "sexe": "M",
+  "dateNaissance": {
+    "$date": "2021-10-05T02:14:58.128Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb5235286b81fe6387ce6"
+  },
+  "nom": "Kobe",
+  "sexe": "M",
+  "dateNaissance": {
+    "$date": "2021-10-05T02:14:59.831Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb5245286b81fe6387ce8"
+  },
+  "nom": "Rosalyn",
+  "sexe": "F",
+  "dateNaissance": {
+    "$date": "2021-10-05T02:15:00.904Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb5255286b81fe6387cea"
+  },
+  "nom": "Christophe",
+  "sexe": "M",
+  "dateNaissance": {
+    "$date": "2021-10-05T02:15:01.855Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb5275286b81fe6387cec"
+  },
+  "nom": "Laney",
+  "sexe": "M",
+  "dateNaissance": {
+    "$date": "2021-10-05T02:15:03.447Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb5285286b81fe6387cee"
+  },
+  "nom": "Octavia",
+  "sexe": "F",
+  "__v": 0,
+  "dateNaissance": {
+    "$date": "2021-10-05T02:15:04.330Z"
+  }
+},{
+  "_id": {
+    "$oid": "615bb5295286b81fe6387cf0"
+  },
+  "nom": "Clemmie",
+  "sexe": "F",
+  "dateNaissance": {
+    "$date": "2021-10-05T02:15:05.354Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb52a5286b81fe6387cf2"
+  },
+  "nom": "Elouise",
+  "sexe": "F",
+  "dateNaissance": {
+    "$date": "2021-10-05T02:15:06.399Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "615bb52b5286b81fe6387cf4"
+  },
+  "nom": "Beulah",
+  "sexe": "F",
+  "dateNaissance": {
+    "$date": "2021-10-05T02:15:07.362Z"
+  },
+  "__v": 0
+}]

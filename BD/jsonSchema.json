@@ -1,0 +1,136 @@
+{
+  "jsonSchemaChaton": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "string"
+      },
+      "nom": {
+        "type": "string"
+      },
+	  "sexe": {
+        "type": "string"
+      },
+      "dateNaissance": {
+        "type": "string"
+      }
+    },
+    "required": ["_id", "nom","sexe", "dateNaissance"]
+  }
+}
+
+{
+  "jsonSchemaArrChatons": {
+    "type": "array",
+    "items": {
+		"type": "object",
+		"properties": {
+		  "_id": {
+			"type": "string"
+		  },
+		  "nom": {
+			"type": "string"
+		  },
+		  "sexe": {
+			"type": "string"
+		  },
+		  "dateNaissance": {
+			"type": "string"
+		  }
+		},
+		"required": ["_id", "nom", "sexe", "dateNaissance"]
+	  }
+  }
+}
+
+
+{
+  "jsonSchemaAdoptant": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "nom": {
+        "type": "string"
+      },
+      "telephone": {
+        "type": "integer"
+      },
+      "historiqueAdoption": {
+        "type": "array"
+      }
+    },
+    "required": ["_id", "email", "nom", "telephone", "historiqueAdoption"]
+  }
+}
+
+{
+  "jsonSchemaArrAdoptant": {
+    "type": "array",
+    "items": {
+		"type": "object",
+		"properties": {
+		  "_id": {
+			"type": "string"
+		  },
+		  "email": {
+			"type": "string"
+		  },
+		  "nom": {
+			"type": "string"
+		  },
+		  "telephone": {
+			"type": "integer"
+		  },
+		  "historiqueAdoption": {
+			"type": "array"
+		  }
+		},
+		"required": ["_id", "email", "nom", "telephone", "historiqueAdoption"]
+	  }
+  }
+}
+
+{
+  "jsonSchemaFamilleTemp": {
+    "type": "object",
+    "properties": {
+      "_id": {
+        "type": "string"
+      },
+      "adresse": {
+        "type": "string"
+      },
+      "chatons": {
+        "type": "array"
+      }
+    },
+    "required": ["_id", "adresse", "chatons"]
+  }
+}
+
+{
+  "jsonSchemaArrFamilleTemp": {
+    "type": "array",
+	"items": {
+		"type": "object",
+		"properties": {
+		  "_id": {
+			"type": "string"
+		  },
+		  "adresse": {
+			"type": "string"
+		  },
+		  "chatons": {
+			"type": "array"
+		  }
+		},
+		"required": ["_id", "adresse", "chatons"]
+	  }
+  }
+}
+
