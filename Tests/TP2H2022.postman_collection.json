@@ -1,0 +1,2211 @@
+{
+	"info": {
+		"_postman_id": "e1e77a44-6e91-4fc6-8bfb-806c58292b3e",
+		"name": "TP2H2022",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CRUD Chatons",
+			"item": [
+				{
+					"name": "chatons",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\";\r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"const chatons = JSON.parse(responseBody).chatons;\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaArrChatons = JSON.parse(environment.jsonSchemaArrChatons);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(chatons, jsonSchemaArrChatons);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON chatons) : \", tv4.error);\r",
+									"\r",
+									"// Taille du tableau de données attendu dans la réponse JSON.\r",
+									"const nbChatonsAttendus = 10;\r",
+									"tests[\"Nb de chatons retournés\"] = chatons.length === nbChatonsAttendus;\r",
+									"\r",
+									"// Test : Premier chaton\r",
+									"if (chatons.length >= 1) {\r",
+									"    tests[\"Premier chaton retourné est Amina\"] = (chatons[0].nom === \"Amina\");\r",
+									"    tests[\"Amina : id\"] = chatons[0]._id.toString() === \"615bb5205286b81fe6387ce2\";\r",
+									"}\r",
+									"\r",
+									"// Test : Dernier chaton:\r",
+									"if (chatons.length >= 1) {\r",
+									"    tests[\"Dernier chaton retourné est Beulah\"] = (chatons[nbChatonsAttendus-1].nom === \"Beulah\");\r",
+									"    tests[\"Beulah : id\"] = chatons[nbChatonsAttendus-1]._id.toString() === \"615bb52b5286b81fe6387cf4\";\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"    "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/chatons",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"chatons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "chatons sexe filter m",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\";\r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"const chatons = JSON.parse(responseBody).chatons;\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaArrChatons = JSON.parse(environment.jsonSchemaArrChatons);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(chatons, jsonSchemaArrChatons);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON chatons) : \", tv4.error);\r",
+									"\r",
+									"// Taille du tableau de données attendu dans la réponse JSON.\r",
+									"const nbChatonsAttendus = 4;\r",
+									"tests[\"Nb de chatons retournés\"] = chatons.length === nbChatonsAttendus;\r",
+									"\r",
+									"// Test : Premier chaton\r",
+									"if (chatons.length >= 1) {\r",
+									"    tests[\"Premier chaton retourné est Dandre\"] = (chatons[0].nom === \"Dandre\");\r",
+									"    tests[\"Dandre : id\"] = chatons[0]._id.toString() === \"615bb5225286b81fe6387ce4\";\r",
+									"}\r",
+									"\r",
+									"// Test : Dernier chaton:\r",
+									"if (chatons.length >= 1) {\r",
+									"    tests[\"Dernier chaton retourné est Laney\"] = (chatons[nbChatonsAttendus-1].nom === \"Laney\");\r",
+									"    tests[\"Laney : id\"] = chatons[nbChatonsAttendus-1]._id.toString() === \"615bb5275286b81fe6387cec\";\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"    "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/chatons?sexe=M",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"chatons"
+							],
+							"query": [
+								{
+									"key": "sexe",
+									"value": "M"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "chatons sexe filter f",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\";\r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"const chatons = JSON.parse(responseBody).chatons;\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaArrChatons = JSON.parse(environment.jsonSchemaArrChatons);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(chatons, jsonSchemaArrChatons);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON chatons) : \", tv4.error);\r",
+									"\r",
+									"// Taille du tableau de données attendu dans la réponse JSON.\r",
+									"const nbChatonsAttendus = 6;\r",
+									"tests[\"Nb de chatons retournés\"] = chatons.length === nbChatonsAttendus;\r",
+									"\r",
+									"// Test : Premier chaton\r",
+									"if (chatons.length >= 1) {\r",
+									"    tests[\"Premier chaton retourné est Amina\"] = (chatons[0].nom === \"Amina\");\r",
+									"    tests[\"Amina : id\"] = chatons[0]._id.toString() === \"615bb5205286b81fe6387ce2\";\r",
+									"}\r",
+									"\r",
+									"// Test : Dernier chaton:\r",
+									"if (chatons.length >= 1) {\r",
+									"    tests[\"Dernier chaton retourné est Beulah\"] = (chatons[nbChatonsAttendus-1].nom === \"Beulah\");\r",
+									"    tests[\"Beulah : id\"] = chatons[nbChatonsAttendus-1]._id.toString() === \"615bb52b5286b81fe6387cf4\";\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"    "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/chatons?sexe=F",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"chatons"
+							],
+							"query": [
+								{
+									"key": "sexe",
+									"value": "F"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "chaton",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"var chaton = JSON.parse(responseBody).chaton;\r",
+									"\r",
+									"// Conservation de l'id de l'enregistrement créé.\r",
+									"postman.setEnvironmentVariable(\"id_last_chaton_created\", chaton._id.toString());\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaChaton = JSON.parse(environment.jsonSchemaChaton);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(chaton, jsonSchemaChaton);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON chaton) : \", tv4.error);\r",
+									"\r",
+									"// Test : l'objet retourné est bien le chaton envoyé dans le body.\r",
+									"tests[\"nom\"] = chaton.nom === environment.randomFirstNameChaton;\r",
+									"tests[\"sexe\"] = chaton.sexe === \"M\";\r",
+									"tests[\"dateNaissance\"] = chaton.dateNaissance === \"2021-10-05T02:15:03.447Z\";\r",
+									"tests[\"id\"] = chaton._id.toString() === environment.id_last_chaton_created;\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"{{randomFirstNameChaton}}\",\r\n    \"sexe\": \"M\",\r\n    \"dateNaissance\" : \"2021-10-05T02:15:03.447+00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}/chaton",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"chaton"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "chatons/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"var chaton = (JSON.parse(responseBody).chaton !== undefined) ? JSON.parse(responseBody).chaton:{};\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaChaton = JSON.parse(environment.jsonSchemaChaton);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(chaton, jsonSchemaChaton);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON chaton) : \", tv4.error);\r",
+									"\r",
+									"tests[\"Pas de champs supplémentaires JSON\"] = Object.keys(chaton).length === Object.keys(jsonSchemaChaton.properties).length +1; // +1 pour prendre en compte le champ __v ajouté automatiquement par mongodb\r",
+									"\r",
+									"// Test : l'objet retourné est bien le chaton envoyé dans le body.\r",
+									"tests[\"id\"] = chaton._id === environment.id_last_chaton_created;\r",
+									"tests[\"nom\"] = chaton.nom === environment.randomFirstNameChaton;\r",
+									"tests[\"sexe\"] = chaton.sexe === \"M\"\r",
+									"tests[\"dateNaissance\"] = chaton.dateNaissance === \"2021-10-05T02:15:03.447Z\"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/chatons/:id",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"chatons",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id_last_chaton_created}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "chatons/:id Fail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 404\"] = responseCode.code === 404;\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/chatons/:id",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"chatons",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{bad_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "chatons/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"var chaton = JSON.parse(responseBody).chaton;\r",
+									"\r",
+									"// Conservation de l'id de l'enregistrement créé.\r",
+									"postman.setEnvironmentVariable(\"id_last_chaton_created\", chaton._id.toString());\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaChaton = JSON.parse(environment.jsonSchemaChaton);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(chaton, jsonSchemaChaton);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON chaton) : \", tv4.error);\r",
+									"\r",
+									"// Test : l'objet retourné est bien le chaton envoyé dans le body.\r",
+									"tests[\"nom\"] = chaton.nom === environment.randomFirstNameChaton;\r",
+									"tests[\"sexe\"] = chaton.sexe === \"F\";\r",
+									"tests[\"dateNaissance\"] = chaton.dateNaissance === \"2021-10-05T02:15:03.447Z\";\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"{{randomFirstNameChaton}}\",\r\n    \"sexe\": \"F\",\r\n    \"dateNaissance\" : \"2021-10-05T02:15:03.447+00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}/chatons/:id",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"chatons",
+								":id"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id_last_chaton_created}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "chatons/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"var chaton = (JSON.parse(responseBody).chaton !== undefined) ? JSON.parse(responseBody).chaton:{};\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaChaton = JSON.parse(environment.jsonSchemaChaton);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(chaton, jsonSchemaChaton);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON chaton) : \", tv4.error);\r",
+									"\r",
+									"tests[\"Pas de champs supplémentaires JSON\"] = Object.keys(chaton).length === Object.keys(jsonSchemaChaton.properties).length +1; // +1 pour prendre en compte le champ __v ajouté automatiquement par mongodb\r",
+									"\r",
+									"// Test : l'objet retourné est bien le cheval envoyé dans le body.\r",
+									"tests[\"id\"] = chaton._id === environment.id_last_chaton_created;\r",
+									"tests[\"nom\"] = chaton.nom === environment.randomFirstNameChaton;\r",
+									"tests[\"sexe\"] = chaton.sexe === \"F\"\r",
+									"tests[\"dateNaissance\"] = chaton.dateNaissance === \"2021-10-05T02:15:03.447Z\"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/chatons/:id",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"chatons",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id_last_chaton_created}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "chatons/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 204\"] = responseCode.code === 204;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/chatons/:id",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"chatons",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id_last_chaton_created}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CRUD FamillesTemp",
+			"item": [
+				{
+					"name": "famillesTemp",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\";\r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"const famillesTemp = JSON.parse(responseBody).famillesTemp;\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaArrfamillesTemp = JSON.parse(environment.jsonSchemaArrfamillesTemp);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(famillesTemp, jsonSchemaArrfamillesTemp);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON famillesTemp) : \", tv4.error);\r",
+									"\r",
+									"// Taille du tableau de données attendu dans la réponse JSON.\r",
+									"const nbfamillesTempAttendus  = 4;\r",
+									"tests[\"Nb de famillesTemp retournés\"] = famillesTemp.length === nbfamillesTempAttendus;\r",
+									"\r",
+									"// Test : Premiere famille\r",
+									"if (famillesTemp.length >= 1) {\r",
+									"    tests[\"Premiere famille retournée est 1234 rue de nule part\"] = (famillesTemp[0].adresse === \"1234 rue de nule part\");\r",
+									"    tests[\"Famille 1234 rue de nule part : id\"] = famillesTemp[0]._id.toString() === \"621fc1990dd87cc71827f0c0\";\r",
+									"}\r",
+									"\r",
+									"// Test : Derniere famille:\r",
+									"if (famillesTemp.length >= 1) {\r",
+									"    tests[\"Dernier famille retournée est 568 chemin hamilton\"] = (famillesTemp[nbfamillesTempAttendus-1].adresse === \"568 chemin hamilton\");\r",
+									"    tests[\"568 chemin hamilton : id\"] = famillesTemp[nbfamillesTempAttendus-1]._id.toString() === \"621fc2e6a94bd310746362a6\";\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"    "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/famillesTemp",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"famillesTemp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "famillesTemp active true filter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\";\r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"const famillesTemp = JSON.parse(responseBody).famillesTemp;\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaArrfamillesTemp = JSON.parse(environment.jsonSchemaArrfamillesTemp);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(famillesTemp, jsonSchemaArrfamillesTemp);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON famillesTemp) : \", tv4.error);\r",
+									"\r",
+									"// Taille du tableau de données attendu dans la réponse JSON.\r",
+									"const nbfamillesTempAttendus  = 1;\r",
+									"tests[\"Nb de famillesTemp retournés\"] = famillesTemp.length === nbfamillesTempAttendus;\r",
+									"\r",
+									"// Test : Premiere famille\r",
+									"if (famillesTemp.length >= 1) {\r",
+									"    tests[\"Premiere famille retournée est 1234 rue de nule part\"] = (famillesTemp[0].adresse === \"1234 rue de nule part\");\r",
+									"    tests[\"Famille 1234 rue de nule part : id\"] = famillesTemp[0]._id.toString() === \"621fc1990dd87cc71827f0c0\";\r",
+									"}\r",
+									"\r",
+									"// Test : Derniere famille:\r",
+									"if (famillesTemp.length >= 1) {\r",
+									"    tests[\"Dernier famille retournée est 1234 rue de nule part\"] = (famillesTemp[nbfamillesTempAttendus-1].adresse === \"1234 rue de nule part\");\r",
+									"    tests[\"1234 rue de nule part : id\"] = famillesTemp[nbfamillesTempAttendus-1]._id.toString() === \"621fc1990dd87cc71827f0c0\";\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"    "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/famillesTemp?active=1",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"famillesTemp"
+							],
+							"query": [
+								{
+									"key": "active",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "famillesTemp active false filter Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\";\r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"const famillesTemp = JSON.parse(responseBody).famillesTemp;\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaArrfamillesTemp = JSON.parse(environment.jsonSchemaArrfamillesTemp);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(famillesTemp, jsonSchemaArrfamillesTemp);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON famillesTemp) : \", tv4.error);\r",
+									"\r",
+									"// Taille du tableau de données attendu dans la réponse JSON.\r",
+									"const nbfamillesTempAttendus  = 3;\r",
+									"tests[\"Nb de famillesTemp retournés\"] = famillesTemp.length === nbfamillesTempAttendus;\r",
+									"\r",
+									"// Test : Premiere famille\r",
+									"if (famillesTemp.length >= 1) {\r",
+									"    tests[\"Premiere famille retournée est 547 rue moisan\"] = (famillesTemp[0].adresse === \"547 rue moisan\");\r",
+									"    tests[\"Famille 547 rue moisan : id\"] = famillesTemp[0]._id.toString() === \"621fc2c7a94bd310746362a2\";\r",
+									"}\r",
+									"\r",
+									"// Test : Derniere famille:\r",
+									"if (famillesTemp.length >= 1) {\r",
+									"    tests[\"Dernier famille retournée est 568 chemin hamilton\"] = (famillesTemp[nbfamillesTempAttendus-1].adresse === \"568 chemin hamilton\");\r",
+									"    tests[\"568 chemin hamilton : id\"] = famillesTemp[nbfamillesTempAttendus-1]._id.toString() === \"621fc2e6a94bd310746362a6\";\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"    "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/famillesTemp?active=0",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"famillesTemp"
+							],
+							"query": [
+								{
+									"key": "active",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "familleTemp",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"var familleTemp = JSON.parse(responseBody).familleTemp;\r",
+									"\r",
+									"// Conservation de l'id de l'enregistrement créé.\r",
+									"postman.setEnvironmentVariable(\"id_last_familleTemp_created\", familleTemp._id.toString());\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaFamilleTemp = JSON.parse(environment.jsonSchemaFamilleTemp);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour une familleTemp\"] = tv4.validate(familleTemp, jsonSchemaFamilleTemp);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON chaton) : \", tv4.error);\r",
+									"\r",
+									"// Test : l'objet retourné est bien lea famille  envoyé dans le body.\r",
+									"tests[\"adresse\"] = familleTemp.adresse === environment.randomAdresse;\r",
+									"tests[\"id\"] = familleTemp._id.toString() === environment.id_last_familleTemp_created;\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"adresse\": \"{{randomAdresse}}\",\r\n    \"chatons\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}/familleTemp",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"familleTemp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "famillesTemp/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"const familleTemp = JSON.parse(responseBody).familleTemp;\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemafamilleTemp = JSON.parse(environment.jsonSchemaFamilleTemp);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(familleTemp, jsonSchemafamilleTemp);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON famillesTemp) : \", tv4.error);\r",
+									"\r",
+									"\r",
+									"tests[\"Pas de champs supplémentaires JSON\"] = Object.keys(familleTemp).length === Object.keys(jsonSchemafamilleTemp.properties).length +1; // +1 pour prendre en compte le champ __v ajouté automatiquement par mongodb\r",
+									"\r",
+									"// Test : l'objet retourné est bien le chaton envoyé dans le body.\r",
+									"tests[\"adresse\"] = familleTemp.adresse === environment.randomAdresse;\r",
+									"tests[\"id\"] = familleTemp._id.toString() === environment.id_last_familleTemp_created;\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/famillesTemp/:id",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"famillesTemp",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id_last_familleTemp_created}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "famillesTemp/:id Fail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 404\"] = responseCode.code === 404;\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/famillesTemp/:familleTempId",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"famillesTemp",
+								":familleTempId"
+							],
+							"variable": [
+								{
+									"key": "familleTempId",
+									"value": "{{bad_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "famillesTemp/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"var familleTemp = JSON.parse(responseBody).familleTemp;\r",
+									"\r",
+									"// Conservation de l'id de l'enregistrement créé.\r",
+									"postman.setEnvironmentVariable(\"id_last_familleTemp_created\", familleTemp._id.toString());\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaFamilleTemp = JSON.parse(environment.jsonSchemaFamilleTemp);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour une familleTemp\"] = tv4.validate(familleTemp, jsonSchemaFamilleTemp);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON chaton) : \", tv4.error);\r",
+									"\r",
+									"// Test : l'objet retourné est bien lea famille  envoyé dans le body.\r",
+									"tests[\"adresse\"] = familleTemp.adresse === environment.randomAdresse2;\r",
+									"tests[\"id\"] = familleTemp._id.toString() === environment.id_last_familleTemp_created;\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let age = Math.floor(Math.random() * 10) + 2;\r",
+									"\r",
+									"postman.setEnvironmentVariable(\"age\", age);\r",
+									"\r",
+									"randomFirstNameHorse = pm.variables.replaceIn('{{$randomFirstName}}');\r",
+									"postman.setEnvironmentVariable(\"randomFirstNameHorse\", randomFirstNameHorse);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"adresse\": \"{{randomAdresse2}}\",\r\n    \"chatons\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}/famillesTemp/:id",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"famillesTemp",
+								":id"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id_last_famillleTemp_created}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "famillesTemp/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"const familleTemp = JSON.parse(responseBody).familleTemp;\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemafamilleTemp = JSON.parse(environment.jsonSchemaFamilleTemp);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(familleTemp, jsonSchemafamilleTemp);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON famillesTemp) : \", tv4.error);\r",
+									"\r",
+									"\r",
+									"tests[\"Pas de champs supplémentaires JSON\"] = Object.keys(familleTemp).length === Object.keys(jsonSchemafamilleTemp.properties).length +1; // +1 pour prendre en compte le champ __v ajouté automatiquement par mongodb\r",
+									"\r",
+									"// Test : l'objet retourné est bien le chaton envoyé dans le body.\r",
+									"tests[\"adresse\"] = familleTemp.adresse === environment.randomAdresse2;\r",
+									"tests[\"id\"] = familleTemp._id.toString() === environment.id_last_familleTemp_created;\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/famillesTemp/:familleTempId",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"famillesTemp",
+								":familleTempId"
+							],
+							"variable": [
+								{
+									"key": "familleTempId",
+									"value": "{{id_last_familleTemp_created}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "famillesTemp/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 204\"] = responseCode.code === 204;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/famillesTemp/:familleTempId",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"famillesTemp",
+								":familleTempId"
+							],
+							"variable": [
+								{
+									"key": "familleTempId",
+									"value": "{{id_last_familleTemp_created}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CRUD Adoptants",
+			"item": [
+				{
+					"name": "adoptants",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\";\r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"const adoptants = JSON.parse(responseBody).adoptants;\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaArrAdoptants = JSON.parse(environment.jsonSchemaArrAdoptants);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un adoptant\"] = tv4.validate(adoptants, jsonSchemaArrAdoptants);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON adoptants) : \", tv4.error);\r",
+									"\r",
+									"// Taille du tableau de données attendu dans la réponse JSON.\r",
+									"const nbadoptantsAttendus = 10;\r",
+									"tests[\"Nb de adoptants retournés\"] = adoptants.length === nbadoptantsAttendus;\r",
+									"\r",
+									"// Test : Premier adoptant\r",
+									"if (adoptants.length >= 1) {\r",
+									"    tests[\"Premier adoptant retourné est Boris\"] = (adoptants[0].nom === \"Boris\");\r",
+									"    tests[\"Boris : id\"] = adoptants[0]._id.toString() === \"615bb6205286b81fe6387d32\";\r",
+									"}\r",
+									"\r",
+									"// Test : Dernier adoptant:\r",
+									"if (adoptants.length >= 1) {\r",
+									"    tests[\"Dernier adoptant retourné est Alejandra\"] = (adoptants[nbadoptantsAttendus-1].nom === \"Alejandra\");\r",
+									"    tests[\"Alejandra : id\"] = adoptants[nbadoptantsAttendus-1]._id.toString() === \"615bb6215286b81fe6387d44\";\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									"    "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/adoptants",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"adoptants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "adoptant",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"var adoptant = JSON.parse(responseBody).adoptant;\r",
+									"\r",
+									"// Conservation de l'id de l'enregistrement créé.\r",
+									"postman.setEnvironmentVariable(\"id_last_adoptant_created\", adoptant._id.toString());\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaadoptant = JSON.parse(environment.jsonSchemaAdoptant);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un adoptant\"] = tv4.validate(adoptant, jsonSchemaadoptant);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON adoptant) : \", tv4.error);\r",
+									"\r",
+									"// Test : l'objet retourné est bien le adoptant envoyé dans le body.\r",
+									"tests[\"nom\"] = adoptant.nom === environment.randomFirstNameAdoptant;\r",
+									"tests[\"email\"] = adoptant.email === environment.randomEmail;\r",
+									"tests[\"telephone\"] = adoptant.telephone.toString() === environment.randomTelephone;\r",
+									"tests[\"id\"] = adoptant._id.toString() === environment.id_last_adoptant_created;\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{randomEmail}}\",\r\n    \"nom\": \"{{randomFirstNameAdoptant}}\",\r\n    \"telephone\": {{randomTelephone}},\r\n    \"historiqueAdoption\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}/adoptant",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"adoptant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "adoptants/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"const adoptant = JSON.parse(responseBody).adoptant;\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaadoptant = JSON.parse(environment.jsonSchemaAdoptant);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(adoptant, jsonSchemaadoptant);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON famillesTemp) : \", tv4.error);\r",
+									"\r",
+									"\r",
+									"tests[\"Pas de champs supplémentaires JSON\"] = Object.keys(adoptant).length === Object.keys(jsonSchemaadoptant.properties).length +1; // +1 pour prendre en compte le champ __v ajouté automatiquement par mongodb\r",
+									"\r",
+									"// Test : l'objet retourné est bien le chaton envoyé dans le body.\r",
+									"tests[\"nom\"] = adoptant.nom === environment.randomFirstNameAdoptant;\r",
+									"tests[\"email\"] = adoptant.email === environment.randomEmail;\r",
+									"tests[\"telephone\"] = adoptant.telephone.toString() === environment.randomTelephone;\r",
+									"tests[\"id\"] = adoptant._id.toString() === environment.id_last_adoptant_created;\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/adoptants/:id",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"adoptants",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id_last_adoptant_created}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "adoptants/:id Fail",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 404\"] = responseCode.code === 404;\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/adoptants/:adoptantId",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"adoptants",
+								":adoptantId"
+							],
+							"variable": [
+								{
+									"key": "adoptantId",
+									"value": "{{bad_id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "adoptants/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"var adoptant = JSON.parse(responseBody).adoptant;\r",
+									"\r",
+									"// Conservation de l'id de l'enregistrement créé.\r",
+									"postman.setEnvironmentVariable(\"id_last_adoptant_created\", adoptant._id.toString());\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaadoptant = JSON.parse(environment.jsonSchemaAdoptant);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un adoptant\"] = tv4.validate(adoptant, jsonSchemaadoptant);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON adoptant) : \", tv4.error);\r",
+									"\r",
+									"// Test : l'objet retourné est bien le adoptant envoyé dans le body.\r",
+									"tests[\"nom\"] = adoptant.nom === environment.randomFirstNameAdoptant;\r",
+									"tests[\"email\"] = adoptant.email === environment.randomEmail2;\r",
+									"tests[\"telephone\"] = adoptant.telephone.toString() === environment.randomTelephone;\r",
+									"tests[\"id\"] = adoptant._id.toString() === environment.id_last_adoptant_created;\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"{{randomEmail2}}\",\r\n    \"nom\": \"{{randomFirstNameAdoptant}}\",\r\n    \"telephone\": {{randomTelephone}},\r\n    \"historiqueAdoption\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}/adoptants/:adoptantId",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"adoptants",
+								":adoptantId"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "adoptantId",
+									"value": "{{id_last_adoptant_created}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "adoptants/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+									"\r",
+									"// Récupération des données reçues au format JSON.\r",
+									"const adoptant = JSON.parse(responseBody).adoptant;\r",
+									"\r",
+									"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+									"const jsonSchemaadoptant = JSON.parse(environment.jsonSchemaAdoptant);\r",
+									"\r",
+									"// Validation selon le schéma de données JSON.\r",
+									"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(adoptant, jsonSchemaadoptant);\r",
+									"if (tv4.error !== null)\r",
+									"   console.log(\"Message de validation schéma JSON famillesTemp) : \", tv4.error);\r",
+									"\r",
+									"\r",
+									"tests[\"Pas de champs supplémentaires JSON\"] = Object.keys(adoptant).length === Object.keys(jsonSchemaadoptant.properties).length +1; // +1 pour prendre en compte le champ __v ajouté automatiquement par mongodb\r",
+									"\r",
+									"// Test : l'objet retourné est bien le chaton envoyé dans le body.\r",
+									"tests[\"nom\"] = adoptant.nom === environment.randomFirstNameAdoptant;\r",
+									"tests[\"email\"] = adoptant.email === environment.randomEmail2;\r",
+									"tests[\"telephone\"] = adoptant.telephone.toString() === environment.randomTelephone;\r",
+									"tests[\"id\"] = adoptant._id.toString() === environment.id_last_adoptant_created;\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/adoptants/:id",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"adoptants",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{id_last_adoptant_created}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "adoptants/:id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 204\"] = responseCode.code === 204;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/adoptants/:adoptantId",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"adoptants",
+								":adoptantId"
+							],
+							"variable": [
+								{
+									"key": "adoptantId",
+									"value": "{{id_last_adoptant_created}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Adoptions et Accueillir",
+			"item": [
+				{
+					"name": "Adoption",
+					"item": [
+						{
+							"name": "chaton",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 201\"] = responseCode.code === 201;\r",
+											"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+											"\r",
+											"// Récupération des données reçues au format JSON.\r",
+											"var chaton = JSON.parse(responseBody).chaton;\r",
+											"\r",
+											"// Conservation de l'id de l'enregistrement créé.\r",
+											"postman.setEnvironmentVariable(\"id_last_chaton_created\", chaton._id.toString());\r",
+											"\r",
+											"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+											"const jsonSchemaChaton = JSON.parse(environment.jsonSchemaChaton);\r",
+											"\r",
+											"// Validation selon le schéma de données JSON.\r",
+											"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(chaton, jsonSchemaChaton);\r",
+											"if (tv4.error !== null)\r",
+											"   console.log(\"Message de validation schéma JSON chaton) : \", tv4.error);\r",
+											"\r",
+											"// Test : l'objet retourné est bien le chaton envoyé dans le body.\r",
+											"tests[\"nom\"] = chaton.nom === environment.randomFirstNameChaton;\r",
+											"tests[\"sexe\"] = chaton.sexe === \"M\";\r",
+											"tests[\"dateNaissance\"] = chaton.dateNaissance === \"2021-10-05T02:15:03.447Z\";\r",
+											"tests[\"id\"] = chaton._id.toString() === environment.id_last_chaton_created;\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nom\": \"{{randomFirstNameChaton}}\",\r\n    \"sexe\": \"M\",\r\n    \"dateNaissance\" : \"2021-10-05T02:15:03.447+00:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/chaton",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"chaton"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "adoptant",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 201\"] = responseCode.code === 201;\r",
+											"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+											"\r",
+											"// Récupération des données reçues au format JSON.\r",
+											"var adoptant = JSON.parse(responseBody).adoptant;\r",
+											"\r",
+											"// Conservation de l'id de l'enregistrement créé.\r",
+											"postman.setEnvironmentVariable(\"id_last_adoptant_created\", adoptant._id.toString());\r",
+											"\r",
+											"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+											"const jsonSchemaadoptant = JSON.parse(environment.jsonSchemaAdoptant);\r",
+											"\r",
+											"// Validation selon le schéma de données JSON.\r",
+											"tests[\"JSON respecte le schéma pour un adoptant\"] = tv4.validate(adoptant, jsonSchemaadoptant);\r",
+											"if (tv4.error !== null)\r",
+											"   console.log(\"Message de validation schéma JSON adoptant) : \", tv4.error);\r",
+											"\r",
+											"// Test : l'objet retourné est bien le adoptant envoyé dans le body.\r",
+											"tests[\"nom\"] = adoptant.nom === environment.randomFirstNameAdoptant;\r",
+											"tests[\"email\"] = adoptant.email === environment.randomEmail;\r",
+											"tests[\"telephone\"] = adoptant.telephone.toString() === environment.randomTelephone;\r",
+											"tests[\"id\"] = adoptant._id.toString() === environment.id_last_adoptant_created;\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"{{randomEmail}}\",\r\n    \"nom\": \"{{randomFirstNameAdoptant}}\",\r\n    \"telephone\": {{randomTelephone}},\r\n    \"historiqueAdoption\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/adoptant",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"adoptant"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "adoptant adoption",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let current_timestamp = new Date();\r",
+											"postman.setEnvironmentVariable(\"current_timestamp\", current_timestamp.toISOString());"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+											"\r",
+											"// Récupération des données reçues au format JSON.\r",
+											"var adoptant = JSON.parse(responseBody).adoptant;\r",
+											"\r",
+											"\r",
+											"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+											"const jsonSchemaadoptant = JSON.parse(environment.jsonSchemaAdoptant);\r",
+											"\r",
+											"// Validation selon le schéma de données JSON.\r",
+											"tests[\"JSON respecte le schéma pour un adoptant\"] = tv4.validate(adoptant, jsonSchemaadoptant);\r",
+											"if (tv4.error !== null)\r",
+											"   console.log(\"Message de validation schéma JSON adoptant) : \", tv4.error);\r",
+											"\r",
+											"// Test : l'objet retourné est bien le adoptant.\r",
+											"tests[\"nom\"] = adoptant.nom === environment.randomFirstNameAdoptant;\r",
+											"tests[\"email\"] = adoptant.email === environment.randomEmail;\r",
+											"tests[\"telephone\"] = adoptant.telephone.toString() === environment.randomTelephone;\r",
+											"tests[\"id\"] = adoptant._id.toString() === environment.id_last_adoptant_created;\r",
+											"\r",
+											"\r",
+											"tests[\"id chaton adopté\"] = adoptant.historiqueAdoption.findIndex(x => x.chatonId.toString() ===  environment.id_last_chaton_created) > -1;\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"chatonId\": \"{{id_last_chaton_created}}\",\r\n    \"dateAdoption\": \"{{current_timestamp}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/adoptants/:id/adoption",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"adoptants",
+										":id",
+										"adoption"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id_last_adoptant_created}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "adoptant adoption failed no date",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 500\"] = responseCode.code === 500;"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"chatonId\": \"{{id_last_chaton_created}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/adoptants/:id/adoption",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"adoptants",
+										":id",
+										"adoption"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id_last_adoptant_created}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "adoptant adoption failed no id_last_chaton_created",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 404\"] = responseCode.code === 404;"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dateAdoption\": \"{{current_timestamp}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/adoptants/:id/adoption",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"adoptants",
+										":id",
+										"adoption"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id_last_adoptant_created}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "chatons/:id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/chatons/:id",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"chatons",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id_last_chaton_created}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "adoptants/:id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/adoptants/:id",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"adoptants",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id_last_adoptant_created}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Accueillir",
+					"item": [
+						{
+							"name": "chaton",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 201\"] = responseCode.code === 201;\r",
+											"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+											"\r",
+											"// Récupération des données reçues au format JSON.\r",
+											"var chaton = JSON.parse(responseBody).chaton;\r",
+											"\r",
+											"// Conservation de l'id de l'enregistrement créé.\r",
+											"postman.setEnvironmentVariable(\"id_last_chaton_created\", chaton._id.toString());\r",
+											"\r",
+											"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+											"const jsonSchemaChaton = JSON.parse(environment.jsonSchemaChaton);\r",
+											"\r",
+											"// Validation selon le schéma de données JSON.\r",
+											"tests[\"JSON respecte le schéma pour un chaton\"] = tv4.validate(chaton, jsonSchemaChaton);\r",
+											"if (tv4.error !== null)\r",
+											"   console.log(\"Message de validation schéma JSON chaton) : \", tv4.error);\r",
+											"\r",
+											"// Test : l'objet retourné est bien le chaton envoyé dans le body.\r",
+											"tests[\"nom\"] = chaton.nom === environment.randomFirstNameChaton;\r",
+											"tests[\"sexe\"] = chaton.sexe === \"M\";\r",
+											"tests[\"dateNaissance\"] = chaton.dateNaissance === \"2021-10-05T02:15:03.447Z\";\r",
+											"tests[\"id\"] = chaton._id.toString() === environment.id_last_chaton_created;\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nom\": \"{{randomFirstNameChaton}}\",\r\n    \"sexe\": \"M\",\r\n    \"dateNaissance\" : \"2021-10-05T02:15:03.447+00:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/chaton",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"chaton"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "adoptant",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 201\"] = responseCode.code === 201;\r",
+											"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+											"\r",
+											"// Récupération des données reçues au format JSON.\r",
+											"var adoptant = JSON.parse(responseBody).adoptant;\r",
+											"\r",
+											"// Conservation de l'id de l'enregistrement créé.\r",
+											"postman.setEnvironmentVariable(\"id_last_adoptant_created\", adoptant._id.toString());\r",
+											"\r",
+											"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+											"const jsonSchemaadoptant = JSON.parse(environment.jsonSchemaAdoptant);\r",
+											"\r",
+											"// Validation selon le schéma de données JSON.\r",
+											"tests[\"JSON respecte le schéma pour un adoptant\"] = tv4.validate(adoptant, jsonSchemaadoptant);\r",
+											"if (tv4.error !== null)\r",
+											"   console.log(\"Message de validation schéma JSON adoptant) : \", tv4.error);\r",
+											"\r",
+											"// Test : l'objet retourné est bien le adoptant envoyé dans le body.\r",
+											"tests[\"nom\"] = adoptant.nom === environment.randomFirstNameAdoptant;\r",
+											"tests[\"email\"] = adoptant.email === environment.randomEmail;\r",
+											"tests[\"telephone\"] = adoptant.telephone.toString() === environment.randomTelephone;\r",
+											"tests[\"id\"] = adoptant._id.toString() === environment.id_last_adoptant_created;\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"{{randomEmail}}\",\r\n    \"nom\": \"{{randomFirstNameAdoptant}}\",\r\n    \"telephone\": {{randomTelephone}},\r\n    \"historiqueAdoption\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/adoptant",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"adoptant"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "familleTemp accueillir",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+											"\r",
+											"// Récupération des données reçues au format JSON.\r",
+											"var familleTemp = JSON.parse(responseBody).familleTemp;\r",
+											"\r",
+											"// Conservation de l'id de l'enregistrement créé.\r",
+											"postman.setEnvironmentVariable(\"id_last_familleTemp_created\", familleTemp._id.toString());\r",
+											"\r",
+											"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+											"const jsonSchemaFamilleTemp = JSON.parse(environment.jsonSchemaFamilleTemp);\r",
+											"\r",
+											"// Validation selon le schéma de données JSON.\r",
+											"tests[\"JSON respecte le schéma pour une familleTemp\"] = tv4.validate(familleTemp, jsonSchemaFamilleTemp);\r",
+											"if (tv4.error !== null)\r",
+											"   console.log(\"Message de validation schéma JSON chaton) : \", tv4.error);\r",
+											"\r",
+											"// Test : l'objet retourné est bien lea famille  envoyé dans le body.\r",
+											"tests[\"adresse\"] = familleTemp.adresse === environment.randomAdresse2;\r",
+											"tests[\"id\"] = familleTemp._id.toString() === environment.id_last_familleTemp_created;\r",
+											"\r",
+											"tests[\"id chaton adopté\"] = familleTemp.chatons.findIndex(x => x.chatonId.toString() ===  environment.id_last_chaton_created) > -1;\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"chatonId\": \"{{id_last_chaton_created}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/famillesTemp/:id/accueillir",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"famillesTemp",
+										":id",
+										"accueillir"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id_last_famillleTemp_created}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "familleTemp accueillir failed no id",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let current_timestamp = new Date();\r",
+											"postman.setEnvironmentVariable(\"current_timestamp\", current_timestamp.toISOString());"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 500\"] = responseCode.code === 500;"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/famillesTemp/:id/accueillir",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"famillesTemp",
+										":id",
+										"accueillir"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id_last_familleTemp_created}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "chatons/:id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/chatons/:id",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"chatons",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id_last_chaton_created}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "famillesTemp/:id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 204\"] = responseCode.code === 204;"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/famillesTemp/:id",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"famillesTemp",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "{{id_last_familleTemp_created}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
