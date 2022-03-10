@@ -19,6 +19,30 @@ exports.getAdoptants = (req, res, next) => {
     });
 };
 
+exports.createAdoptant = (req, res, next) => {
+  const adoptant = new Adoptant({
+    email: req.body.email,
+    nom: req.body.nom,
+    telephone: req.body.telephone,
+    historiqueAdoption: req.body.historiqueAdoption,
+  });
+
+  adoptant
+    .save()
+    .then((result) => {
+      res.status(201).json({
+        message: "Adoptant créé avec succès!",
+        adoptant: result,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
 exports.adoptantReserve = (req, res, next) => {
   const chatonId = req.body.chatonId;
   const date = req.body.date;
