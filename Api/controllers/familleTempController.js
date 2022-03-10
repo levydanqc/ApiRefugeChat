@@ -24,3 +24,24 @@ exports.getFamilleTemp = (req, res, next) => {
       next(err);
     });
 };
+
+exports.createFamilleTemp = (req, res, next) => {
+  const familleTemp = new FamilleTemp({
+    adresse: req.body.adresse,
+    chatons: req.body.chatons,
+  });
+  familleTemp
+    .save()
+    .then((result) => {
+      res.status(201).json({
+        message: "Famille temporaire créée avec succès!",
+        familleTemp: result,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
