@@ -68,12 +68,30 @@ exports.updateChaton = (req, res, next) => {
   for (const [attr, value] of Object.entries(req.body)) {
     updateChaton[attr] = value;
   }
-  Chaton.findByIdAndUpdate({ _id: chatonId }, { $set: updateChaton })
+  Chaton.findByIdAndUpdate(
+    { _id: chatonId },
+    { $set: updateChaton },
+    { new: true }
+  )
     .then((result) => {
       res.status(200).json({
         message: "Chaton mis à jour avec succès.",
         chaton: result,
       });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
+exports.deleteChaton = (req, res, next) => {
+  const chatonId = req.params.chatonId;
+  Chaton.findByIdAndRemove({ _id: chatonId })
+    .then((_) => {
+      res.status(204).send();
     })
     .catch((err) => {
       if (!err.statusCode) {
