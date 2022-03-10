@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/chatons', chatonController.getChatons);
 
-//router.post('/chaton', chatonController.createChaton);
+router.post('/chaton', chatonController.createChaton);
 
 //router.get('/chatons/:chatonId', chatonController.getChaton);
 
