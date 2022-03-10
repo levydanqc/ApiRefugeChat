@@ -8,8 +8,10 @@ const familleTempSchema = new Schema({
   },
   chatons: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Chaton",
+      chatonId: {
+        type: Schema.Types.ObjectId,
+        ref: "Chaton",
+      },
     },
   ],
 });
