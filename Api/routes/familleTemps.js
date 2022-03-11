@@ -8,9 +8,9 @@ router.get("/famillesTemp", familleTempController.getFamilleTemp);
 
 router.post("/familleTemp", familleTempController.createFamilleTemp);
 
-router.get("/famillesTemp/:id", familleTempController.getFamilleTempById);
+router.get("/famillesTemp/:familleTempId", familleTempController.getFamilleTempById);
 
-router.put("/famillesTemp/:id", familleTempController.updateFamilleTemp);
+router.put("/famillesTemp/:familleTempId", familleTempController.updateFamilleTemp);
 
 router.delete("/famillesTemp/:id", familleTempController.deleteFamilleTemp);
 

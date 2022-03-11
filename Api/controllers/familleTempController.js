@@ -47,7 +47,7 @@ exports.createFamilleTemp = (req, res, next) => {
 };
 
 exports.getFamilleTempById = (req, res, next) => {
-  FamilleTemp.findById(req.params.id)
+  FamilleTemp.findById(req.params.familleTempId)
     .populate("chatons.chatonId")
     .then((familleTemp) => {
       if (!familleTemp) {
@@ -69,7 +69,7 @@ exports.getFamilleTempById = (req, res, next) => {
 };
 
 exports.updateFamilleTemp = (req, res, next) => {
-  const familleTempId = req.params.id;
+  const familleTempId = req.params.familleTempId;
 
   const updateFamilleTemp = new FamilleTemp({
     _id: familleTempId,
