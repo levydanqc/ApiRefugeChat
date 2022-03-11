@@ -8,4 +8,6 @@ router.get("/adoptants", adoptantController.getAdoptants);
 
 router.post("/adoptant", adoptantController.createAdoptant);
 
+router.get("/adoptants/:adoptantId", adoptantController.getAdoptantById);
+
 module.exports = router;

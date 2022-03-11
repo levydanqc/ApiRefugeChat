@@ -43,6 +43,27 @@ exports.createAdoptant = (req, res, next) => {
     });
 };
 
+exports.getAdoptantById = (req, res, next) => {
+  Adoptant.findById(req.params.adoptantId)
+    .then((adoptant) => {
+      if (!adoptant) {
+        const error = new Error("Adoptant introuvable.");
+        error.statusCode = 404;
+        throw error;
+      }
+      res.status(200).json({
+        message: "Adoptant récupéré avec succès.",
+        adoptant: adoptant,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
 exports.adoptantReserve = (req, res, next) => {
   const chatonId = req.body.chatonId;
   const date = req.body.date;
