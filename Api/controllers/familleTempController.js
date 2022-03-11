@@ -129,7 +129,6 @@ exports.accueillir = (req, res, next) => {
         .then((familleTemp) => {
           if (!familleTemp) {
             const error = new Error("Famille temporaire introuvable!");
-            // TODO: PUT/famillesTemp/:id/accueillir failed error code
             error.statusCode = 404;
             throw error;
           }
@@ -138,7 +137,6 @@ exports.accueillir = (req, res, next) => {
             familleTemp: familleTemp,
           });
         })
-        // TODO: Mutlple catch or one?
         .catch((err) => {
           if (!err.statusCode) {
             err.statusCode = 500;

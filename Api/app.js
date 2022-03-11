@@ -19,11 +19,6 @@ app.use((req, res, next) => {
   );
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-  // TODO: Vérifier si fonctionne et utile
-  if (req.method === "PUT" || req.method === "POST") {
-    res.setHeader("Content-Type", "application/json");
-  }
-
   if (res.method !== "GET") {
     res.setHeader("Content-Type", "application/json");
   }
