@@ -14,4 +14,9 @@ router.put("/adoptants/:adoptantId", adoptantController.updateAdoptant);
 
 router.delete("/adoptants/:adoptantId", adoptantController.deleteAdoptant);
 
+router.put(
+  "/adoptants/:adoptantId/adoption",
+  adoptantController.adoptantReserve
+);
+
 module.exports = router;

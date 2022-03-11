@@ -19,6 +19,7 @@ const adoptantSchema = new Schema({
       chatonId: {
         type: Schema.Types.ObjectId,
         ref: "Chaton",
+        required: true,
       },
       date: { type: Date, required: true },
     },

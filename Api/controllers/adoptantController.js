@@ -1,6 +1,7 @@
 "use strict";
 
 const Adoptant = require("../models/adoptant");
+const FamilleTemp = require("../models/familleTemp");
 
 exports.getAdoptants = (req, res, next) => {
   Adoptant.find()
@@ -108,18 +109,30 @@ exports.updateAdoptant = (req, res, next) => {
 
 exports.adoptantReserve = (req, res, next) => {
   const chatonId = req.body.chatonId;
-  const date = req.body.date;
+  const date = req.body.dateAdoption;
   const adoptantId = req.params.adoptantId;
 
-  console.log("chatonId", chatonId);
+  FamilleTemp.find().then((famillesTemp) => {
+    famillesTemp.forEach((famille) => {
+      famille.chatons.forEach((chaton) => {
+        if (chaton.chatonId.toString() === chatonId) {
+          const index = famille.chatons.indexOf(chaton);
+          if (index > -1) {
+            famille.chatons.splice(index, 1);
+            famille.save();
+          }
+        }
+      });
+    });
+  });
 
   Adoptant.findById(adoptantId)
     .then((adoptant) => {
-      adoptant.historiqueAdoption.push(req.body);
+      adoptant.historiqueAdoption.push({ chatonId: chatonId, date: date });
       return adoptant.save();
     })
     .then((result) => {
-      res.status(201).json({
+      res.status(200).json({
         message: "Adoptant mis à jour!",
         adoptant: result,
       });
