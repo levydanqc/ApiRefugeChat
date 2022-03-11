@@ -64,6 +64,35 @@ exports.getAdoptantById = (req, res, next) => {
     });
 };
 
+exports.updateAdoptant = (req, res, next) => {
+  const adoptantId = req.params.adoptantId;
+  const updateAdoptant = new Adoptant({
+    _id: adoptantId,
+    email: req.body.email,
+    nom: req.body.nom,
+    telephone: req.body.telephone,
+    historiqueAdoption: req.body.historiqueAdoption,
+  });
+
+  Adoptant.findByIdAndUpdate(
+    { _id: adoptantId },
+    { $set: updateAdoptant },
+    { new: true }
+  )
+    .then((result) => {
+      res.status(200).json({
+        message: "Adoptant mis à jour!",
+        adoptant: result,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
 exports.adoptantReserve = (req, res, next) => {
   const chatonId = req.body.chatonId;
   const date = req.body.date;

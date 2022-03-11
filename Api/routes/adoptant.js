@@ -10,4 +10,6 @@ router.post("/adoptant", adoptantController.createAdoptant);
 
 router.get("/adoptants/:adoptantId", adoptantController.getAdoptantById);
 
+router.put("/adoptants/:adoptantId", adoptantController.updateAdoptant);
+
 module.exports = router;
