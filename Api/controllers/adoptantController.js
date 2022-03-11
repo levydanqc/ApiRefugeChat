@@ -139,7 +139,7 @@ exports.adoptantReserve = (req, res, next) => {
     })
     .catch((err) => {
       if (!err.statusCode) {
-        err.statusCode = 500;
+        err.statusCode = 400;
       }
       next(err);
     });
