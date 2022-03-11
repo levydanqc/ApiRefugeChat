@@ -64,6 +64,19 @@ exports.getAdoptantById = (req, res, next) => {
     });
 };
 
+exports.deleteAdoptant = (req, res, next) => {
+  Adoptant.findByIdAndDelete(req.params.adoptantId)
+    .then((result) => {
+      res.status(204).send();
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
 exports.updateAdoptant = (req, res, next) => {
   const adoptantId = req.params.adoptantId;
   const updateAdoptant = new Adoptant({

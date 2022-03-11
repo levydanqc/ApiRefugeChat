@@ -12,4 +12,6 @@ router.get("/adoptants/:adoptantId", adoptantController.getAdoptantById);
 
 router.put("/adoptants/:adoptantId", adoptantController.updateAdoptant);
 
+router.delete("/adoptants/:adoptantId", adoptantController.deleteAdoptant);
+
 module.exports = router;
