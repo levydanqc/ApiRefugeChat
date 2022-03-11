@@ -1,6 +1,7 @@
 "use strict";
 
 const FamilleTemp = require("../models/familleTemp");
+const Chaton = require("../models/chaton");
 
 exports.getFamilleTemp = (req, res, next) => {
   let condition = {};
@@ -98,8 +99,52 @@ exports.updateFamilleTemp = (req, res, next) => {
 exports.deleteFamilleTemp = (req, res, next) => {
   const familleTempId = req.params.id;
   FamilleTemp.findByIdAndDelete(familleTempId)
-    .then((result) => {
+    .then(() => {
       res.status(204).send();
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
+exports.accueillir = (req, res, next) => {
+  const familleTempId = req.params.familleTempId;
+  const chatonId = req.body.chatonId;
+
+  Chaton.findById(chatonId)
+    .then((chaton) => {
+      if (!chaton) {
+        const error = new Error("Chaton introuvable!");
+        error.statusCode = 404;
+        throw error;
+      }
+      FamilleTemp.findByIdAndUpdate(
+        { _id: familleTempId },
+        { $push: { chatons: { chatonId: chatonId } } },
+        { new: true }
+      )
+        .then((familleTemp) => {
+          if (!familleTemp) {
+            const error = new Error("Famille temporaire introuvable!");
+            // TODO: PUT/famillesTemp/:id/accueillir failed error code
+            error.statusCode = 404;
+            throw error;
+          }
+          res.status(200).json({
+            message: "Chaton accueilli avec succès!",
+            familleTemp: familleTemp,
+          });
+        })
+        // TODO: Mutlple catch or one?
+        .catch((err) => {
+          if (!err.statusCode) {
+            err.statusCode = 500;
+          }
+          next(err);
+        });
     })
     .catch((err) => {
       if (!err.statusCode) {

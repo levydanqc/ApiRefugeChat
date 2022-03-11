@@ -14,4 +14,6 @@ router.put("/famillesTemp/:familleTempId", familleTempController.updateFamilleTe
 
 router.delete("/famillesTemp/:id", familleTempController.deleteFamilleTemp);
 
+router.put("/famillesTemp/:familleTempId/accueillir", familleTempController.accueillir);
+
 module.exports = router;

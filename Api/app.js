@@ -24,7 +24,7 @@ app.use((req, res, next) => {
     res.setHeader("Content-Type", "application/json");
   }
 
-  if (res.method != "GET") {
+  if (res.method !== "GET") {
     res.setHeader("Content-Type", "application/json");
   }
 
