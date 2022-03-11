@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e1e77a44-6e91-4fc6-8bfb-806c58292b3e",
+		"_postman_id": "8d425edc-9fb9-4a72-bfca-5e8198400e94",
 		"name": "TP2H2022",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1705,7 +1705,7 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"tests[\"Status code is 500\"] = responseCode.code === 500;"
+											"tests[\"Status code is 400\"] = responseCode.code === 400;"
 										],
 										"type": "text/javascript"
 									}
@@ -1750,7 +1750,7 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"tests[\"Status code is 404\"] = responseCode.code === 404;"
+											"tests[\"Status code is 400\"] = responseCode.code === 400;"
 										],
 										"type": "text/javascript"
 									}
