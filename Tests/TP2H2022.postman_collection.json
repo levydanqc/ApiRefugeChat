@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8d425edc-9fb9-4a72-bfca-5e8198400e94",
+		"_postman_id": "e845679e-df35-4fb1-a7c7-a84e8343bc2e",
 		"name": "TP2H2022",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -971,7 +971,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "{{id_last_famillleTemp_created}}"
+									"value": "{{id_last_familleTemp_created}}"
 								}
 							]
 						}
@@ -1864,6 +1864,74 @@
 					"name": "Accueillir",
 					"item": [
 						{
+							"name": "familleTemp",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 201\"] = responseCode.code === 201;\r",
+											"tests[\"Content-Type est JSON et UTF-8\"] = postman.getResponseHeader(\"Content-Type\") === \"application/json; charset=utf-8\"; \r",
+											"\r",
+											"// Récupération des données reçues au format JSON.\r",
+											"var familleTemp = JSON.parse(responseBody).familleTemp;\r",
+											"\r",
+											"// Conservation de l'id de l'enregistrement créé.\r",
+											"postman.setEnvironmentVariable(\"id_last_familleTemp_created\", familleTemp._id.toString());\r",
+											"\r",
+											"// Chargement du schéma de données JSON à partir de l'environnement.\r",
+											"const jsonSchemaFamilleTemp = JSON.parse(environment.jsonSchemaFamilleTemp);\r",
+											"\r",
+											"// Validation selon le schéma de données JSON.\r",
+											"tests[\"JSON respecte le schéma pour une familleTemp\"] = tv4.validate(familleTemp, jsonSchemaFamilleTemp);\r",
+											"if (tv4.error !== null)\r",
+											"   console.log(\"Message de validation schéma JSON chaton) : \", tv4.error);\r",
+											"\r",
+											"// Test : l'objet retourné est bien lea famille  envoyé dans le body.\r",
+											"tests[\"adresse\"] = familleTemp.adresse === environment.randomAdresse2;\r",
+											"tests[\"id\"] = familleTemp._id.toString() === environment.id_last_familleTemp_created;\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"adresse\": \"{{randomAdresse2}}\",\r\n    \"chatons\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_base}}/familleTemp",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"familleTemp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "chaton",
 							"event": [
 								{
@@ -2071,7 +2139,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "{{id_last_famillleTemp_created}}"
+											"value": "{{id_last_familleTemp_created}}"
 										}
 									]
 								}
@@ -2095,7 +2163,7 @@
 									"listen": "test",
 									"script": {
 										"exec": [
-											"tests[\"Status code is 500\"] = responseCode.code === 500;"
+											"tests[\"Status code is 404\"] = responseCode.code === 404;"
 										],
 										"type": "text/javascript"
 									}
